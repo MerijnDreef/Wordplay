@@ -9,9 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <index-vue />
+        <login-vue />
     </div>
-
-    <h2>bruh</h2>
 </body>
 </html>

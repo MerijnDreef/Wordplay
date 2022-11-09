@@ -1,9 +1,9 @@
 <template>
-  <h1>Index Vue!</h1>
+  <h1>register Vue!</h1>
 </template>
 
 <script>
 export default {
-    name: 'indexVue'
+    name: 'registerVue'
 }
 </script>
