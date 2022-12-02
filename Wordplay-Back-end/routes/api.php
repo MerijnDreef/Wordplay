@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/test', [TestController::class, 'index']);
 
-Route::post('/register', [TestController::class, 'create']);
+Route::post('/register', [UserController::class, 'registerUser']);
+
+Route::post('/login', [UserController::class, 'loginUser']);
+

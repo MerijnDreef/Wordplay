@@ -2,14 +2,21 @@
     <div class="register">
         <form name="registerForm" @submit.prevent="postingData">
             <h1>Register</h1>
+           
+            <label for="username">Username </label>
+            <input name="username" type="text" v-model="postData.name">
+            <br>
+            <div v-if="Checks.emailWrong === 'True'">
+                <p>The email is not correct</p>
+            </div>
             <label for="email">Email </label>
             <input name="email" type="email" v-model="postData.email">
             <br>
-            <label for="username">Username </label>
-            <input name="username" type="text" v-model="postData.username">
-            <br>
+            <div v-if="Checks.passwordWrong === 'True'">
+                <p>The password is not correct</p>
+            </div>
             <label for="password">Password </label>
-            <input name="password" type="password" v-model="postData.password">
+            <input name="new-password" type="new-password" v-model="postData.password">
             <br>
             <button>Register</button>
         </form>
@@ -26,9 +33,10 @@ export default {
         return {
             postData: {
                 email: '',
-                username: '',
+                name: '',
                 password: '',
-            }
+            },
+            Checks: []
         }
     },
 
@@ -36,7 +44,10 @@ export default {
         postingData() {
             axios
                 .post('http://127.0.0.1:8000/api/register', this.postData)
-                .then((response) => console.log(response))
+                // .then((response) => console.log(response))
+                .then((response) => {
+                    this.Checks = response.data
+                })
         }
     }
 

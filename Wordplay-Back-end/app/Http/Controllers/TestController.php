@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class TestController extends Controller
 {
@@ -26,11 +27,9 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        return response()->json([
-            'status' => 'False',
-        ]);
+        // 
     }
 
     /**
