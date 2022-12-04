@@ -5,8 +5,10 @@
 <template>
   <main>
     <!-- <TheWelcome /> -->
-    <button>Makkelijk</button>
+    <RouterLink to="/easy">easy</RouterLink>
+
     <br>
-    <button>Moeilijk</button>
+    <RouterLink to="/difficult">difficult</RouterLink>
+
   </main>
 </template>
