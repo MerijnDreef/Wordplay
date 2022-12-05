@@ -20,6 +20,9 @@
             <br>
             <button>Register</button>
         </form>
+        <div v-if="Checks.status === 'True'">
+            <h2>Account succesfully made</h2>
+        </div>
     </div>
 </template>
 

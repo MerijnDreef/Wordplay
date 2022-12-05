@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -23,10 +24,10 @@ class UserController extends Controller
                 'status' => 'True',
             ]);
         } else {
-            if($request->email == null && $request->password == null){
+            if($request->email != null && $request->password == null){
                 return response()->json([
                     'status' => 'False',
-                    'emailWrong' => 'True',
+                    'emailWrong' => 'False',
                     'passwordWrong' => 'True',
                 ]);    
             } else if($request->email == null && $request->password != null){
@@ -38,29 +39,53 @@ class UserController extends Controller
             } else {
                 return response()->json([
                     'status' => 'False',
-                    'emailWrong' => 'False',
+                    'emailWrong' => 'True',
                     'passwordWrong' => 'True',
                 ]); 
             }
         }
     }
 
+    
+    /**
+     * Login api
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function loginUser(Request $request) {
 
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
- 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
+            $user = Auth::user(); 
+            $success['token'] =  $user->createToken('MyApp')->plainTextToken; 
+            // $success['name'] =  $user->name;
+   
+            // return $this->sendResponse($success, 'User login successfully.');
             return response()->json([
                 'status' => 'True',
-                'emailWrong' => 'False',
-                'passwordWrong' => 'False',
+                'token' => $succes->token,
             ]);
-        }
+        } 
+        else{ 
+            if($request->email != null && $request->password == null){
+                return response()->json([
+                    'status' => 'False',
+                    'emailWrong' => 'False',
+                    'passwordWrong' => 'True',
+                ]);    
+            } else if($request->email == null && $request->password != null){
+                return response()->json([
+                    'status' => 'False',
+                    'emailWrong' => 'True',
+                    'passwordWrong' => 'False',
+                ]); 
+            } else {
+                return response()->json([
+                    'status' => 'False',
+                    'emailWrong' => 'True',
+                    'passwordWrong' => 'True',
+                ]); 
+            }
+        } 
 
     }
 }
