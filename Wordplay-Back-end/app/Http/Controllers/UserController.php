@@ -62,7 +62,7 @@ class UserController extends Controller
             // return $this->sendResponse($success, 'User login successfully.');
             return response()->json([
                 'status' => 'True',
-                'token' => $succes->token,
+                'token' => $success,
             ]);
         } 
         else{ 

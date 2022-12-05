@@ -18,7 +18,7 @@
         </form>
 
         <div v-if="Checks.status === 'True'">
-            <p>I work now</p>
+            <h2>Succesful login</h2>
         </div>
     </div>
 </template>
