@@ -7,7 +7,7 @@
             <input name="username" type="text" v-model="postData.name">
             <br>
             <div v-if="Checks.emailWrong === 'True'">
-                <p>The email is not correct</p>
+                <p>this account is already registered</p>
             </div>
             <label for="email">Email </label>
             <input name="email" type="email" v-model="postData.email">
@@ -16,8 +16,13 @@
                 <p>The password is not correct</p>
             </div>
             <label for="password">Password </label>
-            <input name="new-password" type="new-password" v-model="postData.password">
+            <input name="password" type="password" v-model="postData.password">
             <br>
+            <div v-if="Checks.verifyPassword === 'False'">
+                <p>Password is either missing or not type correctly</p>
+            </div>
+            <input name="passwordVerify" type="password" v-model="postData.passwordVerify">
+            <br>    
             <button>Register</button>
         </form>
         <div v-if="Checks.status === 'True'">
@@ -38,6 +43,7 @@ export default {
                 email: '',
                 name: '',
                 password: '',
+                passwordVerify: '',
             },
             Checks: []
         }

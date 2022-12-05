@@ -2,17 +2,14 @@
     <div class="login">
         <form name="loginForm" @submit.prevent="postingData">
             <h1>Login</h1>
-            <div v-if="Checks.emailWrong === 'True'">
-                <p>The email is not correct</p>
+            <div v-if="Checks.status === 'False'">
+                <p>these records do not match our database</p>
             </div>
             <label>Email </label>
             <input name="email" type="email" v-model="postData.email">
             <br>
-            <div v-if="Checks.passwordWrong === 'True'">
-                <p>The password is not correct</p>
-            </div>
             <label>Password </label>
-            <input name="new-password" type="new-password" v-model="postData.password">
+            <input name="password" type="password" v-model="postData.password">
             <br>
             <button>Login</button>
         </form>

@@ -13,16 +13,23 @@ class UserController extends Controller
             $this->validate(request(), [
                 'name' => 'required',
                 'email' => 'required|email',
-                'password' => 'required'
+                'password' => 'required',
+                'passwordVerify' => 'required'
             ]);
-            
-            $user = User::create(request(['name', 'email', 'password']));
-            
-            auth()->login($user);
+            if($request->password == $request->passwordVerify){
+                $user = User::create(request(['name', 'email', 'password']));
+                
+                auth()->login($user);
 
-            return response()->json([
-                'status' => 'True',
-            ]);
+                return response()->json([
+                    'status' => 'True',
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'False',
+                    'verifypassword' => 'False',
+                ]);
+            }
         } else {
             if($request->email != null && $request->password == null){
                 return response()->json([
