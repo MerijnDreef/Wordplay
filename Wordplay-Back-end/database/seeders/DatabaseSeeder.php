@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(SqlArticleSeeder::class);
+        $this->call(SqlFileSeeder::class);
+        $this->call(SqlWordSeeder::class);
+        $this->call(AdjectiveSeeder::class);
     }
 }
