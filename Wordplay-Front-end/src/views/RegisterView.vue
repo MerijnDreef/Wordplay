@@ -1,11 +1,9 @@
 <template>
     <div class="register">
+
         <form name="registerForm" @submit.prevent="postingData">
             <h1>Register</h1>
-           
-            <label for="username">Username </label>
-            <input name="username" type="text" v-model="postData.name">
-            <br>
+            <p name="username">Username: {{ postData.name }} </p>
             <div v-if="Checks.emailWrong === 'True'">
                 <p>this account is already registered</p>
             </div>
@@ -21,13 +19,17 @@
             <div v-if="Checks.verifyPassword === 'False'">
                 <p>Password is either missing or not type correctly</p>
             </div>
+            <label for="passwordVerify">Password Verify </label>
             <input name="passwordVerify" type="password" v-model="postData.passwordVerify">
-            <br>    
+            <br>
             <button>Register</button>
         </form>
         <div v-if="Checks.status === 'True'">
             <h2>Account succesfully made</h2>
         </div>
+        <br>
+        <RouterLink to="/login">Already have an account?</RouterLink>
+
     </div>
 </template>
 
@@ -45,8 +47,24 @@ export default {
                 password: '',
                 passwordVerify: '',
             },
-            Checks: []
+            nameChoiceInt: {
+                FirstName: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+                SecondName: Math.floor(Math.random() * (29129 - 1 + 1)) + 1,
+            },
+            Checks: [],
         }
+    },
+    mounted() {
+        axios
+            .post('http://127.0.0.1:8000/api/nameObtain', this.nameChoiceInt)
+            .then((response) => {
+                // this.NameOption = response.data
+                this.postData = response.data
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
     },
 
     methods: {
@@ -60,23 +78,8 @@ export default {
         }
     }
 
-    // var bodyFormData = new FormData(),
-    // bodyFormData.append('userName', 'Fred'),
+    // Math.floor(Math.random() * (10 - 1 + 1)) + 1;
 
-    // axios({
-    //     method: "post",
-    //     url: "myurl",
-    //     data: bodyFormData,
-    //     headers: { "Content-Type": "multipart/form-data" },
-    // })
-    // .then(function (response) {
-    //     //handle success
-    //     console.log(response);
-    // })
-    //     .catch(function (response) {
-    //         //handle error
-    //         console.log(response);
-    //     });
 }
 
 </script>

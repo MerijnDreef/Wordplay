@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>This is the start of leaderbaord, awaiting construction</h1>
     <h3>{{ posts.message }}</h3>
   </div>
 </template>

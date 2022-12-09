@@ -17,6 +17,8 @@
         <div v-if="Checks.status === 'True'">
             <h2>Succesful login</h2>
         </div>
+        <br>
+        <RouterLink to="/register">Don't have an account?</RouterLink>
     </div>
 </template>
 

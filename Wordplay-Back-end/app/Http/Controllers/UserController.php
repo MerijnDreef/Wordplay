@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Adjectives;
+use App\Models\Word;
 
 class UserController extends Controller
 {
@@ -93,6 +95,22 @@ class UserController extends Controller
                 ]); 
             }
         } 
+
+    }
+
+    public function getName(Request $request) {
+
+        $firstName = Adjectives::where('id', $request->FirstName)->get("adjective_name");
+        $secondName = Word::where('id', $request->SecondName)->get("word");
+
+        // $testing = array_merge($firstName[0]->adjective_name, $secondName[0]->word);
+        // $testing = $firstName->merge($secondName);
+        // $testing->all();
+
+        return response()->json([
+            'name' => $firstName[0]->adjective_name." ".$secondName[0]->word,
+
+        ]);
 
     }
 }

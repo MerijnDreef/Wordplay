@@ -1,28 +1,20 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 // import axios from 'axios';
-import HelloWorld from "./components/HelloWorld.vue";
+import Navigate from "./components/Navigation.vue";
 </script>
 
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+        <Navigate />
+    <div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
+      <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">login</RouterLink>
         <RouterLink to="/register">register</RouterLink>
-      </nav>
+      </nav> -->
     </div>
   </header>
 

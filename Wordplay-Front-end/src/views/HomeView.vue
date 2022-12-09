@@ -6,9 +6,9 @@
   <main>
     <!-- <TheWelcome /> -->
     <RouterLink to="/easy">easy</RouterLink>
-
     <br>
     <RouterLink to="/difficult">difficult</RouterLink>
+    <br>
 
   </main>
 </template>
