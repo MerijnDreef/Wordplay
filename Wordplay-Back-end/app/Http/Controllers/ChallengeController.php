@@ -14,7 +14,6 @@ class ChallengeController extends Controller
         $challenge = Word::where('id', $request->firstNumber)->get();
         return response()->json([
             'challenge' => $challenge,
-            // 'testing' => $request->firstNumber,
         ]);
     }
 }
