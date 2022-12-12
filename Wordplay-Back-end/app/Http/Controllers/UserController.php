@@ -109,7 +109,6 @@ class UserController extends Controller
 
         return response()->json([
             'name' => $firstName[0]->adjective_name." ".$secondName[0]->word,
-
         ]);
 
     }

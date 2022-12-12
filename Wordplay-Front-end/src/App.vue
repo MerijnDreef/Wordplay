@@ -6,9 +6,7 @@ import Navigate from "./components/Navigation.vue";
 
 <template>
   <header>
-        <Navigate />
     <div>
-
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -19,6 +17,7 @@ import Navigate from "./components/Navigation.vue";
   </header>
 
   <RouterView />
+  <Navigate />
 </template>
 
 <style scoped>

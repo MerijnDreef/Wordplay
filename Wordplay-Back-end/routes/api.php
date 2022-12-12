@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChallengeController;
 
 
 /*
@@ -28,3 +29,4 @@ Route::post('/nameObtain', [UserController::class, 'getName']);
 
 Route::post('/login', [UserController::class, 'loginUser']);
 
+Route::post('/challenge', [ChallengeController::class, 'getChallenges']);
