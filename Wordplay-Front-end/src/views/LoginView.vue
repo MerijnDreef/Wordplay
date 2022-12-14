@@ -54,7 +54,7 @@ export default {
 <style>
 @media (min-width: 1024px) {
     .login {
-        min-height: 100vh;
+        min-height: 50vh;
         display: flex;
         flex-direction: column;
         justify-content: center;

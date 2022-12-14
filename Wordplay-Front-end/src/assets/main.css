@@ -1,8 +1,13 @@
 @import './base.css';
 
+/* 
+Accent kleur #EBEBEB
+standaard kleur #FAFAFA
+Extra accent kleur #FFFFFF
+ */
 #app {
   max-width: 1280px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 2rem;
 
   font-weight: normal;
@@ -24,12 +29,15 @@ a,
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    /* place-items: center; */
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* padding: 0 2rem; */
+    text-align: bottom;
+    height: 100%;
+
   }
 }

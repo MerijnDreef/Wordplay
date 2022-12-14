@@ -10,10 +10,13 @@ use App\Models\Word;
 class ChallengeController extends Controller
 {
     public function getChallenges(Request $request){
-        // $challengeArray = [];
-        $challenge = Word::where('id', $request->firstNumber)->get();
+        $challengeArray = [];
+        // $challenge = Word::where('id', $request->firstNumber)->get();
+        for($i = 0; $i < 20; $i++) {
+            $challengeArray[$i] = Word::where('id', $request[$i]['challengeId'])->get();
+        }
         return response()->json([
-            'challenge' => $challenge,
+            'challenge' => $challengeArray,
         ]);
     }
 }

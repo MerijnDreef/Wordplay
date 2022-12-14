@@ -1,38 +1,19 @@
 <template>
-    <nav>
-        <div class="navClass">
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/leaderboard">Leaderboard</RouterLink>
+    <div class="navClass">
+        <h2 class="buttonHeader">
             <RouterLink to="/profile">Profile</RouterLink>
-            <RouterLink to="/login">login</RouterLink>
-        </div>
-    </nav>
+        </h2>
+        <h2 class="buttonHeader">
+            <RouterLink to="/">Home</RouterLink>
+        </h2>
+        <h2 class="buttonHeader">
+            <RouterLink to="/leaderboard">Leaderboard</RouterLink>
+        </h2>
+    </div>
 </template>
 
 <style>
-.navClass {
-    /* margin: 10px; */
-    padding-right: 10px;
-    width: 100%;
-}
-
 @media (min-width: 1024px) {
-    header {
-        display: flex;
-        place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
-    }
-
-    .logo {
-        margin: 0 2rem 0 0;
-    }
-
-    header .wrapper {
-        display: flex;
-        place-items: flex-start;
-        flex-wrap: wrap;
-    }
-
     nav {
         text-align: left;
         margin-left: -1rem;
@@ -40,6 +21,19 @@
 
         padding: 1rem 0;
         margin-top: 1rem;
+    }
+
+    .buttonHeader {
+        display: inline;
+    }
+
+    .navClass {
+        padding-right: 4rem;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
     }
 }
 </style>

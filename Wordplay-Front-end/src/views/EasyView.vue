@@ -2,8 +2,8 @@
     <div>
         <h1>Welk lidwoord hoort hierbij?</h1>
         <div v-if="QuestionShow === 'True'">
-            <h1>{{ ChallengeQuestions.challenge[i]["word"] }}</h1>
-         </div>
+            <h1>{{ ChallengeQuestions.challenge[QuestionCounter][0]["word"] }}</h1>
+        </div>
         <button @click="answer('De')">De</button>
         <button @click="answer('Het')">Het</button>
         <div v-if="DeAnswer === 'True'">
@@ -18,48 +18,24 @@
 <script lang="ts">
 import axios from 'axios';
 
- // ChallengeQuestionsNumbers: [
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            //     { challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 },
-            // ],
-
 export default {
     data() {
         return {
+            QuestionCounter: 0,
             i: 0,
+            Limit: 19,
             DeAnswer: '',
             HetAnswer: '',
             QuestionShow: 'False',
-            ChallengeNumberNow: {
-                firstNumber: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 
-            },
+            ChallengeQuestionId: [],
             ChallengeQuestions: [],
         }
     },
     async mounted() {
         // this.challenges()
 
-       await axios
-            .post('http://127.0.0.1:8000/api/challenge', this.ChallengeNumberNow)
+        await axios
+            .post('http://127.0.0.1:8000/api/challenge', this.ChallengeQuestionId)
             .then((response) => {
                 this.ChallengeQuestions = response.data
                 //show data in view
@@ -68,26 +44,39 @@ export default {
                 console.log(error)
             })
     },
-
     methods: {
-        // async challenges() {
-        //     for (this.i = 0; this.i < 20; this.i++) {
-        //         this.ChallengeNumberNow.push({ challengeId: Math.floor(Math.random() * (29129 - 1 + 1)) + 1 })
-        //     }
-        //     this.Testing = 'True';
-        // },
+        async challenges() {
+            for (this.i = 0; this.i < 20; this.i++) {
+                this.ChallengeQuestionId.push({ challengeId: (Math.floor(Math.random() * (29129 - 1 + 1)) + 1) });
+            }
+        },
 
         answer(answer) {
             if (answer === 'De') {
                 this.DeAnswer = 'True';
                 this.HetAnswer = 'False';
-                this.i++;
+                if (this.QuestionCounter != this.Limit) {
+                    this.QuestionCounter++;
+
+                } else {
+                    console.log("limit answers reached");
+
+                }
             } else if (answer === 'Het') {
                 this.DeAnswer = 'False';
                 this.HetAnswer = 'True';
-                this.i++;
+                if (this.QuestionCounter != this.Limit) {
+                    this.QuestionCounter++;
+
+                } else {
+                    console.log("limit answers reached");
+
+                }
             }
         }
+    },
+    created() {
+        this.challenges();
     }
 }
 </script>
