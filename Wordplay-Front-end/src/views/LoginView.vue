@@ -8,17 +8,17 @@
             <label>Email </label>
             <input name="email" type="email" v-model="postData.email">
             <br>
-            <label>Password </label>
+            <label>Wachtwoord </label>
             <input name="password" type="password" v-model="postData.password">
             <br>
             <button>Login</button>
         </form>
 
         <div v-if="Checks.status === 'True'">
-            <h2>Succesful login</h2>
+            <h2>Succesvolle login</h2>
         </div>
         <br>
-        <RouterLink to="/register">Don't have an account?</RouterLink>
+        <RouterLink to="/register">Geen account?</RouterLink>
     </div>
 </template>
 

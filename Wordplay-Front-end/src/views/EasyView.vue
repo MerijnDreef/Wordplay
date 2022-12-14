@@ -4,19 +4,15 @@
         <div v-if="QuestionShow === 'True'">
             <h1>{{ ChallengeQuestions.challenge[QuestionCounter][0]["word"] }}</h1>
         </div>
-        <button @click="answer('De')">De</button>
-        <button @click="answer('Het')">Het</button>
-        <div v-if="DeAnswer === 'True'">
-            <p>You have answered with De</p>
-        </div>
-        <div v-if="HetAnswer === 'True'">
-            <p>You have answered with Het</p>
-        </div>
+        <button @click="answer(1, 'De')">De</button>
+        <button @click="answer(2, 'Het')">Het</button>
+        {{ ChallengeQuestions.answers }}
     </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     data() {
@@ -51,10 +47,14 @@ export default {
             }
         },
 
-        answer(answer) {
-            if (answer === 'De') {
-                this.DeAnswer = 'True';
-                this.HetAnswer = 'False';
+        answer(answer, chosenAnswer) {
+            if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Correct',
+                    text: 'Het juiste lidwoord voor {{ this.ChallengeQuestions.challenge[QuestionCounter][0]["word"] }} is [goede lidwoord]',
+                })
                 if (this.QuestionCounter != this.Limit) {
                     this.QuestionCounter++;
 
@@ -62,9 +62,12 @@ export default {
                     console.log("limit answers reached");
 
                 }
-            } else if (answer === 'Het') {
-                this.DeAnswer = 'False';
-                this.HetAnswer = 'True';
+            } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Correct',
+                    text: 'Het juiste lidwoord voor  {{ this.ChallengeQuestions.challenge[QuestionCounter][0]["word"] }} is [goede lidwoord]',
+                })
                 if (this.QuestionCounter != this.Limit) {
                     this.QuestionCounter++;
 
@@ -72,6 +75,16 @@ export default {
                     console.log("limit answers reached");
 
                 }
+            } else if(this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De'){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'De',
+                })
+            } else if(this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het'){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Het',
+                })
             }
         }
     },
@@ -80,3 +93,10 @@ export default {
     }
 }
 </script>
+
+<style>
+
+/* .challenges{
+    margin: 0 auto;
+} */
+</style>

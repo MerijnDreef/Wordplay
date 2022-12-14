@@ -5,30 +5,30 @@
             <h1>Register</h1>
             <p name="username">Username: {{ postData.name }} </p>
             <div v-if="Checks.emailWrong === 'True'">
-                <p>this account is already registered</p>
+                <p>Dit account bestaat al</p>
             </div>
             <label for="email">Email </label>
             <input name="email" type="email" v-model="postData.email">
             <br>
             <div v-if="Checks.passwordWrong === 'True'">
-                <p>The password is not correct</p>
+                <p>Het wachtwoord is niet correct</p>
             </div>
-            <label for="password">Password </label>
+            <label for="password">Wachtwoord </label>
             <input name="password" type="password" v-model="postData.password">
             <br>
             <div v-if="Checks.verifyPassword === 'False'">
-                <p>Password is either missing or not type correctly</p>
+                <p>U bent vergeten het wachtwoord in te vullen of het is verkeerd ingevuld</p>
             </div>
-            <label for="passwordVerify">Password Verify </label>
+            <label for="passwordVerify">Wachtwoord verifiëren </label>
             <input name="passwordVerify" type="password" v-model="postData.passwordVerify">
             <br>
             <button>Register</button>
         </form>
         <div v-if="Checks.status === 'True'">
-            <h2>Account succesfully made</h2>
+            <h2>Account is aangemaakt</h2>
         </div>
         <br>
-        <RouterLink to="/login">Already have an account?</RouterLink>
+        <RouterLink to="/login">Al een account?</RouterLink>
 
     </div>
 </template>

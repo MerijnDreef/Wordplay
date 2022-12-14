@@ -1,13 +1,13 @@
 <template>
     <div class="navClass">
         <h2 class="buttonHeader">
-            <RouterLink to="/profile">Profile</RouterLink>
+            <RouterLink to="/profile">Profiel</RouterLink>
         </h2>
         <h2 class="buttonHeader">
             <RouterLink to="/">Home</RouterLink>
         </h2>
         <h2 class="buttonHeader">
-            <RouterLink to="/leaderboard">Leaderboard</RouterLink>
+            <RouterLink to="/leaderboard">Scorebord</RouterLink>
         </h2>
     </div>
 </template>
