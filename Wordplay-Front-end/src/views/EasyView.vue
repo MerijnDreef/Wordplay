@@ -6,7 +6,6 @@
         </div>
         <button @click="answer(1, 'De')">De</button>
         <button @click="answer(2, 'Het')">Het</button>
-        {{ ChallengeQuestions.answers }}
     </div>
 </template>
 
@@ -48,43 +47,35 @@ export default {
         },
 
         answer(answer, chosenAnswer) {
-            if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Correct',
-                    text: 'Het juiste lidwoord voor {{ this.ChallengeQuestions.challenge[QuestionCounter][0]["word"] }} is [goede lidwoord]',
-                })
-                if (this.QuestionCounter != this.Limit) {
-                    this.QuestionCounter++;
-
-                } else {
-                    console.log("limit answers reached");
-
+            if (this.QuestionCounter != this.Limit) {
+                if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Correct',
+                        text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
+                    })
+                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Correct',
+                        text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
+                    })
+                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
+                    })
+                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
+                    })
                 }
-            } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Correct',
-                    text: 'Het juiste lidwoord voor  {{ this.ChallengeQuestions.challenge[QuestionCounter][0]["word"] }} is [goede lidwoord]',
-                })
-                if (this.QuestionCounter != this.Limit) {
-                    this.QuestionCounter++;
+                this.QuestionCounter++;
 
-                } else {
-                    console.log("limit answers reached");
+            } else {
+                console.log("limit answers reached");
 
-                }
-            } else if(this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De'){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'De',
-                })
-            } else if(this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het'){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Het',
-                })
             }
         }
     },
@@ -95,7 +86,6 @@ export default {
 </script>
 
 <style>
-
 /* .challenges{
     margin: 0 auto;
 } */
