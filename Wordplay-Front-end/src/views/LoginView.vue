@@ -28,6 +28,7 @@ import axios from 'axios';
 export default {
     name: "LoginView",
 
+
     data() {
         return {
             postData: {
@@ -45,7 +46,12 @@ export default {
                 // .then((response) => console.log(response))
                 .then((response) => {
                     this.Checks = response.data
+                    this.logInFunction(this.Checks)
                 })
+        },
+        logInFunction(givenData) {
+            this.$emit('userInfo', givenData)
+            console.log("I have been activated", givenData)
         }
     }
 }

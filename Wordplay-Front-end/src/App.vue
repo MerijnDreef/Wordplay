@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { ref } from 'vue'
 // import axios from 'axios';
 import Navigate from "./components/Navigation.vue";
+
+const userInfo = ref()
 </script>
 
 <template>
   <header>
     <div>
+      <p>{{ userInfo }}</p>
       <RouterLink to="/login">login</RouterLink>
 
       <!-- <nav>

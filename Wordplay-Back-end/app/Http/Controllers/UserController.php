@@ -72,6 +72,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'True',
                 'token' => $success,
+                'user' => $user->id,
             ]);
         } 
         else{ 
