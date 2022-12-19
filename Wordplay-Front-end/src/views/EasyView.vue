@@ -1,11 +1,14 @@
 <template>
-    <div>
+    <div class="challenges">
         <h1>Welk lidwoord hoort hierbij?</h1>
         <div v-if="QuestionShow === 'True'">
             <h1>{{ ChallengeQuestions.challenge[QuestionCounter][0]["word"] }}</h1>
         </div>
         <button @click="answer(1, 'De')">De</button>
         <button @click="answer(2, 'Het')">Het</button>
+        <div v-if="finished === 'True'">
+            <h2>je bent klaar</h2>
+        </div>
     </div>
 </template>
 
@@ -24,6 +27,7 @@ export default {
             QuestionShow: 'False',
             ChallengeQuestionId: [],
             ChallengeQuestions: [],
+            finished: 'False',
         }
     },
     async mounted() {
@@ -47,33 +51,35 @@ export default {
         },
 
         answer(answer, chosenAnswer) {
+
+            if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Correct',
+                    text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
+                })
+            } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Correct',
+                    text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
+                })
+            } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
+                })
+            } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
+                })
+            }
             if (this.QuestionCounter != this.Limit) {
-                if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Correct',
-                        text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
-                    })
-                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Correct',
-                        text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
-                    })
-                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
-                    })
-                } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
-                    })
-                }
                 this.QuestionCounter++;
 
             } else {
+                this.finished = 'True';
                 console.log("limit answers reached");
 
             }
@@ -86,7 +92,7 @@ export default {
 </script>
 
 <style>
-/* .challenges{
-    margin: 0 auto;
-} */
+.challenges{
+    text-align: center;
+}
 </style>
