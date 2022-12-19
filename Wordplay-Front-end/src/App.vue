@@ -5,11 +5,17 @@ import { ref } from 'vue'
 import Navigate from "./components/Navigation.vue";
 
 const userInfo = ref()
+
+// export default {
+//   props: {
+//     userInfo: { type: String, default: ""}
+//   }
+// }
 </script>
 
 <template>
   <header>
-    <div>
+    <div class="currentItem">
       <p>{{ userInfo }}</p>
       <RouterLink to="/login">login</RouterLink>
 
@@ -29,6 +35,13 @@ const userInfo = ref()
 </template>
 
 <style scoped>
+/* @media (min-width: 1024px) { */
+  .currentItem {
+    /* padding-left: 10rem; */
+    text-align: center;
+  }
+/* } */
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;
