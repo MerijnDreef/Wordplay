@@ -6,11 +6,11 @@ import Navigate from "./components/Navigation.vue";
 
 const userInfo = ref()
 
-// export default {
-//   props: {
-//     userInfo: { type: String, default: ""}
-//   }
-// }
+export default {
+  props: {
+    userInfo: { type: String, default: ""}
+  }
+}
 </script>
 
 <template>
