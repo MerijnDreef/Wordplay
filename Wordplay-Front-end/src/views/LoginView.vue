@@ -28,7 +28,12 @@ import axios from 'axios';
 export default {
     name: "LoginView",
 
-
+    props: {
+        userInfo: {
+            type: Array
+        }
+    },
+    emits: ['userInfo'],
     data() {
         return {
             postData: {
