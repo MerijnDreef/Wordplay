@@ -13,27 +13,17 @@
             <br>
             <button>Login</button>
         </form>
-
-        <div v-if="Checks.status === 'True'">
-            <h2>Succesvolle login</h2>
-        </div>
         <br>
         <RouterLink to="/register">Geen account?</RouterLink>
     </div>
 </template>
 
 <script lang="ts">
+import router from '@/router';
 import axios from 'axios';
 
 export default {
     name: "LoginView",
-
-    props: {
-        userInfo: {
-            type: Array
-        }
-    },
-    emits: ['userInfo'],
     data() {
         return {
             postData: {
@@ -55,8 +45,18 @@ export default {
                 })
         },
         logInFunction(givenData) {
-            this.$emit('userInfo', givenData)
-            console.log("I have been activated", givenData)
+            sessionStorage.setItem('isAuthLogin', givenData.isAuth)
+            sessionStorage.setItem('tokenLogin', givenData.token['token'])
+            sessionStorage.setItem('userLogin', givenData.user)
+
+            router.push('/')
+        }
+    },
+    created() {
+        const reloaded = localStorage.getItem('reloaded');
+        if (reloaded !== 'true') {
+            localStorage.setItem('reloaded', 'true');
+            location.reload();
         }
     }
 }

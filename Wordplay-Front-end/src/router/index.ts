@@ -44,5 +44,13 @@ const router = createRouter({
     },
   ],
 });
+ 
+router.beforeEach(async (to, from) => {
+  if (!sessionStorage.getItem('isAuthLogin') && to.name !== 'login' && to.name !== 'register' ) {
+  return { name: 'login' }
+  } else if(sessionStorage.getItem('isAuthLogin') && to.name === 'login' || to.name === 'register') {
+    return { name: '/' }
+  }
+})
 
 export default router;

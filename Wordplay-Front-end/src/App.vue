@@ -1,11 +1,17 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+import { ref } from 'vue'
+// import axios from 'axios';
+import Navigate from "./components/Navigation.vue";
+
+var loggedIn = sessionStorage.getItem('isAuthLogin')
+
+</script>
+
 <template>
   <header>
     <div class="currentItem">
-      <!-- <RouterLink to="/login">login</RouterLink> -->
-      <div>
-        <Login @userInfo="dataMethod($event)" />
-      <p> {{ props.userInfo }}</p>
-      </div>
+
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -17,46 +23,10 @@
     </div>
 
   </header>
-
-  <Navigate />
+  <div class="navStyling" v-if="loggedIn === 'True'">
+    <Navigate />
+  </div>
 </template>
-
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import { ref } from 'vue'
-// import axios from 'axios';
-import Navigate from "./components/Navigation.vue";
-import Login from "./views/LoginView.vue";
-
-const props = defineProps<{
-  status: Boolean,
-  token: String,
-  user: Number
-}>()
-
-// const emit = defineEmits<{
-//   (e: 'userInfo'): void
-// }>()
-
-function dataMethod(data) {
-  console.log(data);
-  console.log("man");
-  this.props = data;
-}
-
-// return { userInfo };
-
-// const userInfo = ref()
-
-// export default {
-//   components: {
-//     Login,
-//   },
-//   props: {
-//     userInfo: Array,
-//   }
-// }
-</script>
 
 <style scoped>
 /* @media (min-width: 1024px) { */
