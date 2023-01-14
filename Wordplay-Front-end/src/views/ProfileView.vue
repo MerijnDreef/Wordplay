@@ -29,10 +29,10 @@ export default {
     }
   },
   methods:{
-    removeSessionStorage(){
-      sessionStorage.clear();
-      router.push('/login')
-    }
+    // removeSessionStorage(){
+    //   sessionStorage.clear();
+    //   router.push('/login')
+    // }
   }
 
 }

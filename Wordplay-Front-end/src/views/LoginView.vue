@@ -48,14 +48,15 @@ export default {
             sessionStorage.setItem('isAuthLogin', givenData.isAuth)
             sessionStorage.setItem('tokenLogin', givenData.token['token'])
             sessionStorage.setItem('userLogin', givenData.user)
+            sessionStorage.removeItem('reloaded');
 
             router.push('/')
         }
     },
     created() {
-        const reloaded = localStorage.getItem('reloaded');
+        const reloaded = sessionStorage.getItem('reloaded');
         if (reloaded !== 'true') {
-            localStorage.setItem('reloaded', 'true');
+            sessionStorage.setItem('reloaded', 'true');
             location.reload();
         }
     }
