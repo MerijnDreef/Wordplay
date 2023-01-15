@@ -113,4 +113,14 @@ class UserController extends Controller
         ]);
 
     }
+
+    public function getUserInfo(Request $request) {
+       $userInfo = User::where('id', $request->userLoginId)->get();
+       return response()->json([
+        'userName' => $userInfo[0]->name,
+        'userEmail' => $userInfo[0]->email,
+        'userCreatedAt' => $userInfo[0]->created_at,
+        // 'request' => $userInfo[0]->name,
+       ]); 
+    }
 }

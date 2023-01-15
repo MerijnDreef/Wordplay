@@ -1,26 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 // import axios from 'axios';
 import Navigate from "./components/Navigation.vue";
 
 var loggedIn = sessionStorage.getItem('isAuthLogin')
 
-// sessionStorage.removeItem('reloaded');
-
-
-
-onMounted(() => {
-const reloaded = sessionStorage.getItem('reloaded');
-
-  console.log("mounted is called")
-  if (reloaded !== 'true') {
-  sessionStorage.setItem('reloaded', 'true');
-  console.log("mounted funcion is doing it's thing")
-
-  location.reload();
-}
-})
 
 </script>
 
@@ -50,6 +35,7 @@ const reloaded = sessionStorage.getItem('reloaded');
   /* padding-left: 10rem; */
   text-align: center;
   /* display: flex; */
+  padding: 2rem; 
 }
 
 /* } */

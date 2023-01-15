@@ -48,7 +48,7 @@ export default {
             sessionStorage.setItem('isAuthLogin', givenData.isAuth)
             sessionStorage.setItem('tokenLogin', givenData.token['token'])
             sessionStorage.setItem('userLogin', givenData.user)
-            sessionStorage.removeItem('reloaded');
+            sessionStorage.setItem('reloaded', 'false');
 
             router.push('/')
         }

@@ -29,11 +29,13 @@
 
     .navClass {
         padding-right: 4rem;
+        padding-left:4rem;
         width: 100%;
         position: fixed;
         bottom: 0;
         display: flex;
         justify-content: space-between;
+        background-color: #EBEBEB;
     }
 }
 </style>

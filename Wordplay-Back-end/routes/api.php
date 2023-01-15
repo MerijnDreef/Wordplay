@@ -30,3 +30,5 @@ Route::post('/nameObtain', [UserController::class, 'getName']);
 Route::post('/login', [UserController::class, 'loginUser']);
 
 Route::post('/challenge', [ChallengeController::class, 'getChallenges']);
+
+Route::post('/userInfo', [UserController::class, 'getUserInfo']);

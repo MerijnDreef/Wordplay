@@ -1,5 +1,15 @@
-<script setup lang="ts">
+<script lang="ts">
 // import TheWelcome from "../components/TheWelcome.vue";
+
+export default {
+  created() {
+    const reloaded = sessionStorage.getItem('reloaded');
+    if (reloaded !== 'true') {
+      sessionStorage.setItem('reloaded', 'true');
+      location.reload();
+    }
+  }
+}
 </script>
 
 <template>
@@ -9,9 +19,9 @@
     <br>
     <RouterLink to="/difficult">difficult</RouterLink>
     <br>
-    <div class="one"></div>
+    <!-- <div class="one"></div>
     <div class="three"></div>
-    <div class="two"></div>
+    <div class="two"></div> -->
 
 
   </main>
