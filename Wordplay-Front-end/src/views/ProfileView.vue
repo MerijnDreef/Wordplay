@@ -7,7 +7,7 @@
 
         <UserAchievements />
         <!-- <p>{{ this.userId }}</p> -->
-        <button @click="removeSessionStorage">Remove session</button>
+        <button @click="removeSessionStorage">Log out</button>
     </div>
 </template>
 
