@@ -44,11 +44,15 @@ const router = createRouter({
     },
   ],
 });
- 
+
 router.beforeEach(async (to, from) => {
-  if (!sessionStorage.getItem('isAuthLogin') && to.name !== 'login' && to.name !== 'register' ) {
-  return { name: 'login' }
-  } else if(sessionStorage.getItem('isAuthLogin') && to.name === 'login' || to.name === 'register') {
+  if (!sessionStorage.getItem('isAuthLogin') && to.name !== 'register' && to.name !== 'login') {
+    if (to.name === 'login' && from.name === 'register') {
+      return { name: 'login' }
+    } else if (to.name === 'register' && from.name === 'login') {
+      return { name: 'register' }
+    }
+  } else if (sessionStorage.getItem('isAuthLogin') === true && to.name === 'login' || to.name === 'register') {
     return { name: '/' }
   }
 })

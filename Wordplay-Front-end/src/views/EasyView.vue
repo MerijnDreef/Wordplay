@@ -9,6 +9,8 @@
         <div v-if="finished === 'True'">
             <h2>je bent klaar</h2>
         </div>
+        <p>{{ ChallengeQuestionAnswered }}</p>
+        <p>{{ ChallengeQuestionAnsweredResult }}</p>
     </div>
 </template>
 
@@ -28,6 +30,8 @@ export default {
             ChallengeQuestionId: [],
             ChallengeQuestions: [],
             finished: 'False',
+            ChallengeQuestionAnswered: [],
+            ChallengeQuestionAnsweredResult: [],
         }
     },
     async mounted() {
@@ -58,24 +62,29 @@ export default {
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
                 })
+                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'De';
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
                 Swal.fire({
                     icon: 'success',
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
                 })
+                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'Het';
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
+                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'De';
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
+                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'Het';
             }
             if (this.QuestionCounter != this.Limit) {
+                this.ChallengeQuestionAnswered[this.QuestionCounter] = chosenAnswer;
                 this.QuestionCounter++;
 
             } else {
@@ -92,7 +101,7 @@ export default {
 </script>
 
 <style>
-.challenges{
+.challenges {
     text-align: center;
 }
 </style>
