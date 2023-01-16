@@ -116,10 +116,12 @@ class UserController extends Controller
 
     public function getUserInfo(Request $request) {
        $userInfo = User::where('id', $request->userLoginId)->get();
+
+       $dateTime = $userInfo[0]->created_at->format('Y-m-d\ h:i:s');
        return response()->json([
         'userName' => $userInfo[0]->name,
         'userEmail' => $userInfo[0]->email,
-        'userCreatedAt' => $userInfo[0]->created_at,
+        'userCreatedAt' => $dateTime,
         // 'request' => $userInfo[0]->name,
        ]); 
     }

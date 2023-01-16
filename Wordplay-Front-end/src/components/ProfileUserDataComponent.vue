@@ -21,13 +21,10 @@ export default {
         }
     },
     mounted() {
-        console.log('bread')
         axios
             .post('http://127.0.0.1:8000/api/userInfo', this.userId)
             .then((response) => {
-                // this.NameOption = response.data
                 this.userData = response.data
-
             })
             .catch(error => {
                 console.log(error)
