@@ -32,3 +32,5 @@ Route::post('/login', [UserController::class, 'loginUser']);
 Route::post('/challenge', [ChallengeController::class, 'getChallenges']);
 
 Route::post('/userInfo', [UserController::class, 'getUserInfo']);
+
+Route::post('/sessionSend', [ChallengeController::class, 'challengeSave']);

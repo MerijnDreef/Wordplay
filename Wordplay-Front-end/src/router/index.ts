@@ -46,9 +46,9 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) => {
-  if (!sessionStorage.getItem('isAuthLogin') && to.name !== 'login') {
+  if (!sessionStorage.getItem('isAuthLogin') || sessionStorage.getItem('isAuthLogin') == undefined && to.name !== 'login') {
       return { name: 'login' }
-  } else if (sessionStorage.getItem('isAuthLogin') && to.name === 'login') {
+  } else if (sessionStorage.getItem('isAuthLogin')  && to.name === 'login') {
     return { name: '/' }
   }
 })

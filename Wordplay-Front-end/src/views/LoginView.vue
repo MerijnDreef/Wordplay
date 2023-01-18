@@ -6,10 +6,10 @@
                 <p>these records do not match our database</p>
             </div>
             <label>Email </label>
-            <input name="email" type="email" v-model="loginDatapost.email">
+            <input name="email" type="email" v-model="loginPostData.email">
             <br>
             <label>Wachtwoord </label>
-            <input name="password" type="password" v-model="loginDatapost.password">
+            <input name="password" type="password" v-model="loginPostData.password">
             <br>
             <button>Login</button>
         </form>
@@ -26,19 +26,19 @@
                 <p>Dit account bestaat al</p>
             </div>
             <label for="email">Email </label>
-            <input name="email" type="email" v-model="registerDataPost.email">
+            <input name="email" type="email" v-model="registerPostData.email">
             <br>
             <div v-if="RegisterChecks.passwordWrong === 'True'">
                 <p>Het wachtwoord is niet correct</p>
             </div>
             <label for="password">Wachtwoord </label>
-            <input name="password" type="password" v-model="registerDataPost.password">
+            <input name="password" type="password" v-model="registerPostData.password">
             <br>
             <div v-if="RegisterChecks.verifyPassword === 'False'">
                 <p>U bent vergeten het wachtwoord in te vullen of het is verkeerd ingevuld</p>
             </div>
             <label for="passwordVerify">Wachtwoord verifiëren </label>
-            <input name="passwordVerify" type="password" v-model="registerDataPost.passwordVerify">
+            <input name="passwordVerify" type="password" v-model="registerPostData.passwordVerify">
             <br>
             <button>Register</button>
         </form>

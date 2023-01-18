@@ -9,8 +9,10 @@
         <div v-if="finished === 'True'">
             <h2>je bent klaar</h2>
         </div>
-        <p>{{ ChallengeQuestionAnswered }}</p>
-        <p>{{ ChallengeQuestionAnsweredResult }}</p>
+        <p>{{ challengeData.ChallengeQuestionAnswered }}</p>
+        <p>{{ challengeData.ChallengeQuestionAnsweredResult }}</p>
+        <p>{{ testing }}</p>
+        <p>{{ timestamp }}</p>
     </div>
 </template>
 
@@ -30,8 +32,14 @@ export default {
             ChallengeQuestionId: [],
             ChallengeQuestions: [],
             finished: 'False',
-            ChallengeQuestionAnswered: [],
-            ChallengeQuestionAnsweredResult: [],
+            challengeData: {
+                userId: sessionStorage.getItem('userLogin'),
+                ChallengeQuestionAnswered: [],
+                ChallengeQuestionAnsweredResult: [],
+                timestamp: '',
+            },
+            testing: [],
+
         }
     },
     async mounted() {
@@ -62,40 +70,54 @@ export default {
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
                 })
-                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'De';
+                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
                 Swal.fire({
                     icon: 'success',
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
                 })
-                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'Het';
+                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
-                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'De';
+                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
-                this.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 'Het';
+                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
             }
             if (this.QuestionCounter != this.Limit) {
-                this.ChallengeQuestionAnswered[this.QuestionCounter] = chosenAnswer;
+                this.challengeData.ChallengeQuestionAnswered[this.QuestionCounter] = answer;
                 this.QuestionCounter++;
 
             } else {
                 this.finished = 'True';
                 console.log("limit answers reached");
-
+                axios
+                    .post('http://127.0.0.1:8000/api/sessionSend', this.challengeData)
+                    .then((response) => {
+                        this.testing = response.data
+                    })
+                this.getNow();
             }
+        },
+
+        getNow: function () {
+            const today = new Date();
+            const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            const dateTime = date + ' ' + time;
+            this.timestamp = dateTime;
         }
     },
     created() {
         this.challenges();
+        this.getNow();
     }
 }
 </script>
