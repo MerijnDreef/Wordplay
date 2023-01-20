@@ -17,6 +17,7 @@ class CreateChallengesSessionHistoryTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('session_id');
+            $table->dateTime('time_session_start');
             $table->timestamps();
         });
     }

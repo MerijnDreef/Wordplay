@@ -34,7 +34,7 @@ class ChallengeController extends Controller
         challengesSessionHistory::create([
             'user_id' => $request->userId,
             'session_id' => $sessionLength,
-            'created_at' => $request->timestamp,
+            'time_session_start' => $request->timestamp,
         ]);
 
         // $sessionId = $request->challengeData;
