@@ -18,6 +18,7 @@ class CreateChallengesSessionResultTable extends Migration
             $table->foreignId('session_id');
             $table->foreignId('article_word_id');
             $table->foreignId('answer_id');
+            $table->timestamps();
         });
     }
 

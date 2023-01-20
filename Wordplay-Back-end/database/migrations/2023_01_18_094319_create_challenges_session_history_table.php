@@ -14,9 +14,8 @@ class CreateChallengesSessionHistoryTable extends Migration
     public function up()
     {
         Schema::create('challenges_session_history', function (Blueprint $table) {
-            $table->id();
+            $table->id('session_id');
             $table->foreignId('user_id');
-            $table->integer('session_id');
             $table->dateTime('time_session_start');
             $table->timestamps();
         });
