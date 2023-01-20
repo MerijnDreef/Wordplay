@@ -70,28 +70,29 @@ export default {
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is De',
                 })
-                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
+                // this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'Het') {
                 Swal.fire({
                     icon: 'success',
                     title: 'Correct',
                     text: 'Het juiste lidwoord voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"] + ' is Het',
                 })
-                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
+                // this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'De') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is De voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
-                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
+                // this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 1;
             } else if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] !== answer && chosenAnswer !== 'Het') {
                 Swal.fire({
                     icon: 'error',
                     title: 'helaas het juiste lidwoord is Het voor ' + this.ChallengeQuestions.challenge[this.QuestionCounter][0]["word"],
                 })
-                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
+                // this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = 2;
             }
             if (this.QuestionCounter != this.Limit) {
+                this.challengeData.ChallengeQuestionAnsweredResult[this.QuestionCounter] = this.ChallengeQuestionId[this.QuestionCounter].challengeId
                 this.challengeData.ChallengeQuestionAnswered[this.QuestionCounter] = answer;
                 this.QuestionCounter++;
 
