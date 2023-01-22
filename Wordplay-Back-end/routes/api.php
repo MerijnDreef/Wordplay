@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\HistoryController;
 
 
 /*
@@ -34,3 +35,5 @@ Route::post('/challenge', [ChallengeController::class, 'getChallenges']);
 Route::post('/userInfo', [UserController::class, 'getUserInfo']);
 
 Route::post('/sessionSend', [ChallengeController::class, 'challengeSave']);
+
+Route::post('/historySessions', [HistoryController::class, 'getHistorySession']);

@@ -23,13 +23,13 @@ class challengesSessionResult extends Model
         return $this->belongsTo(challengesSessionHistory::class);
     }
 
-    // public function articleWord()
-    // {
-    //     return $this->hasMany(ArticleWord::class);
-    // }
+    public function articleWord()
+    {
+        return $this->hasMany(ArticleWord::class);
+    }
 
-    // public function adjective()
-    // {
-    //     return $this->hasMany(Adjectives::class);
-    // }
+    public function adjective()
+    {
+        return $this->hasMany(Adjectives::class);
+    }
 }
