@@ -27,7 +27,8 @@ class HistoryController extends Controller
         $artData = [];
         $wordData = [];
         $sessionHistory = challengesSessionResult::where('session_id', $request->sessionId)->get();
-
+        $sessionHistoryId = $sessionHistory->pluck('article_word_id');
+        $words = Word::with('ArticleWords')->find($sessionHistoryId);
         for($y = 0; $y < 19; $y++) {
             $artData[$y] = ArticleWord::where('id', $sessionHistory[$y]['article_word_id'])->get('article_id');
             
@@ -44,6 +45,8 @@ class HistoryController extends Controller
             'woId' => $wrdId[0],
             'wordData' => $wordData,
             'artData' => $artData,
+            'sessionHistoryIds' => $sessionHistoryId,
+            'words' => $words
             // 'sessionId' => $request->sessionId,
         ]);
     }

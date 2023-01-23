@@ -11,7 +11,7 @@
     </div>
     <div v-if="historyChosen === true">
         <div v-for="index in 19" :key="index">
-            <p>{{ sessionResultHistory.sessionData[index -1] }}</p>
+            <p>{{ sessionResultHistory.sessionData[index - 1] }}</p>
         </div>
     </div>
     <p>{{ sessionResultHistory.waagh }}</p>
@@ -19,6 +19,8 @@
     <p>{{ sessionResultHistory.wordData }}</p>
     <p>{{ sessionResultHistory.artData }}</p>
     <p>{{ sessionsendData.sessionId }}</p>
+    <p>{{ sessionResultHistory.sessionHistoryIds }}</p>
+    <p>{{ sessionResultHistory.words }}</p>
 
 </template>
 

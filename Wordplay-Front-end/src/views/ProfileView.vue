@@ -2,12 +2,13 @@
     <div>
         <p>This is the start of profile, awaiting construction</p>
         <UserInfo />
+        <button @click="removeSessionStorage">Log out</button>
 
         <UserData />
 
         <UserAchievements />
         <!-- <p>{{ this.userId }}</p> -->
-        <button @click="removeSessionStorage">Log out</button>
+        
     </div>
 </template>
 
