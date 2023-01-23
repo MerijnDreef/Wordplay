@@ -9,10 +9,6 @@
         <div v-if="finished === 'True'">
             <h2>je bent klaar</h2>
         </div>
-        <p>{{ challengeData.ChallengeQuestionAnswered }}</p>
-        <p>{{ challengeData.ChallengeQuestionAnsweredResult }}</p>
-        <p>{{ testing }}</p>
-        <p>{{ timestamp }}</p>
     </div>
 </template>
 
@@ -105,6 +101,7 @@ export default {
                         this.testing = response.data
                     })
                 this.getNow();
+                this.QuestionCounter = 0;
             }
         },
 
