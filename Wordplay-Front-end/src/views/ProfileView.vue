@@ -2,7 +2,7 @@
     <div>
         <p>This is the start of profile, awaiting construction</p>
         <UserInfo />
-        <button @click="removeSessionStorage">Log out</button>
+        
 
         <UserData />
 
@@ -17,7 +17,6 @@ import UserInfo from "../components/ProfileUserInfoComponent.vue";
 import UserData from "../components/ProfileUserDataComponent.vue";
 import UserAchievements from "../components/ProfileUserAchievementsComponent.vue";
 import axios from 'axios';
-import router from '@/router';
 
 export default {
   components: {
@@ -25,17 +24,7 @@ export default {
     UserData,
     UserAchievements,
   },
-  data() {
-    return {
-      userId: sessionStorage.getItem('userLogin')
-    }
-  },
-  methods:{
-    removeSessionStorage(){
-      sessionStorage.clear();
-      router.push('/login')
-    }
-  },
+  
 
 }
 </script>
