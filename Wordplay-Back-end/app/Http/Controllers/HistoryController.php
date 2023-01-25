@@ -22,32 +22,14 @@ class HistoryController extends Controller
     }
 
     public function getHistoryResult(Request $request){
-        // $sessionHistory = [];
-        $wrdId = [];
-        $artData = [];
-        $wordData = [];
         $sessionHistory = challengesSessionResult::where('session_id', $request->sessionId)->get();
         $sessionHistoryId = $sessionHistory->pluck('article_word_id');
         $words = Word::with('ArticleWords')->find($sessionHistoryId);
-        for($y = 0; $y < 19; $y++) {
-            $artData[$y] = ArticleWord::where('id', $sessionHistory[$y]['article_word_id'])->get('article_id');
-            
-            $wrdId[$y] = ArticleWord::where('id', $sessionHistory[$y]['article_word_id'])->get('word_id');
-
-            $wordData[$y] = Word::where('id', $wrdId[$y])->get('word');
-            // $artData = Article::where('id', $artId[$y])->get('article');
-            // $artData = $artId[$y];
-        }
 
         return response()->json([
             'sessionData' => $sessionHistory,
-            'waagh' => $wrdId,
-            'woId' => $wrdId[0],
-            'wordData' => $wordData,
-            'artData' => $artData,
             'sessionHistoryIds' => $sessionHistoryId,
             'words' => $words
-            // 'sessionId' => $request->sessionId,
         ]);
     }
 }
