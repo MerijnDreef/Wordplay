@@ -33,7 +33,7 @@ var loggedIn = sessionStorage.getItem('isAuthLogin')
 /* @media (min-width: 1024px) { */
 .currentItem {
   /* padding-left: 10rem; */
-  text-align: center;
+  /* text-align: center; */
   /* display: flex; */
   padding: 2rem; 
 }

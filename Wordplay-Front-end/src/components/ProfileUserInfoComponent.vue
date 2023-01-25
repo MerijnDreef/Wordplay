@@ -1,7 +1,7 @@
 <template>
     <h1>User Info</h1>
     <RouterLink to="/history">history</RouterLink>
-    <button @click="removeSessionStorage">Log out</button>
+    <button class="buttonSpacing" @click="removeSessionStorage">Log out</button>
 </template>
 
 <script lang="ts">
@@ -22,3 +22,9 @@ export default {
     },
 }
 </script>
+
+<style>
+.buttonSpacing{
+    margin-left: 1rem;
+}
+</style>
