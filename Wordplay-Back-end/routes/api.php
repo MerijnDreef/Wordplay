@@ -38,3 +38,6 @@ Route::post('/sessionSend', [ChallengeController::class, 'challengeSave']);
 
 Route::post('/historySessions', [HistoryController::class, 'getHistorySession']);
 Route::post('/historyAnswers', [HistoryController::class, 'getHistoryResult']);
+
+Route::get('/getWords', [ChallengeController::class, 'getWords']);
+

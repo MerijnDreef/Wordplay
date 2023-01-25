@@ -59,4 +59,11 @@ class ChallengeController extends Controller
             'loop' => $y,
         ]);
     }
+
+    public function getWords(){
+        $wordGet = ArticleWord::find(2)->limit(5)->get();
+        return response()->json([
+            'test' => $wordGet,
+        ]);
+    }
 }
