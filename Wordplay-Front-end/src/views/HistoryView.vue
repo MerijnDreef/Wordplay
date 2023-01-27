@@ -1,5 +1,6 @@
 <template>
     <div v-if="historySelect === true">
+        <RouterLink to="/profile">Terug naar profiel</RouterLink>
         <div v-for="index in sessionHistory.length" :key="index">
             <button @click="historyGet(index - 1)" class="spacingHistory">bekijk deze sessie</button>
             <p class="numbering">{{ sessionHistory.sessionData[index - 1]['time_session_start'] }}</p>
