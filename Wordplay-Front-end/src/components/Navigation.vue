@@ -3,9 +3,12 @@
         <h2 class="buttonHeader">
             <RouterLink to="/profile"><font-awesome-icon icon="fa-solid fa-user" /></RouterLink>
         </h2>
-        <h2 name="challengesStyle" class="challengesStyle">
-            <RouterLink to="/" ><font-awesome-icon icon="fa-solid fa-question" /></RouterLink>
+        <h2 name="challengesStyle" class="outerstyling">
+            <RouterLink to="/" class="challengesStyle"><font-awesome-icon icon="fa-solid fa-question" /></RouterLink>
         </h2>
+        <!-- <h2 name="challengesStyle"  class="challengesStyle">
+            <RouterLink to="/" ><font-awesome-icon icon="fa-solid fa-question" /></RouterLink>
+        </h2> -->
         <h2 class="buttonHeader">
             <RouterLink to="/leaderboard"><font-awesome-icon icon="fa-solid fa-list" /></RouterLink>
         </h2>
@@ -33,7 +36,26 @@ nav {
     padding: 0rem 2rem;
     padding-top: 1rem;
     background-color: #EBEBEB;
-    /* overflow: visible; */
+    overflow: visible; 
+    top: -30%;
+}
+/* .challengesStyle {
+    display: inline-block;
+    border-radius: 50%;
+    height: 68px;
+    padding: 0rem 2rem;
+    padding-top: 1rem;
+    background-color: #EBEBEB;
+    top: -75%;
+} */
+
+.outerstyling {
+    display: inline-block;
+    border-radius: 50%;
+    height: 68px;
+    padding: 0rem 0rem;
+    padding-top: 1rem;
+    background-color: #EBEBEB;
     top: -75%;
 }
 
