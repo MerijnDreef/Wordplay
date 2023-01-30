@@ -16,11 +16,11 @@ export default {
   <main>
     <!-- <TheWelcome /> -->
     <h1>
-      <RouterLink to="/easy">easy</RouterLink>
+      <RouterLink to="/easy">Makkelijk</RouterLink>
     </h1>
     <br>
     <h1>
-      <RouterLink to="/difficult">difficult</RouterLink>
+      <RouterLink to="/difficult">Moeilijk</RouterLink>
     </h1>
     <br>
     <!-- <div class="one"></div>

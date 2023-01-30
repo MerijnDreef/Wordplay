@@ -4,8 +4,8 @@
         <div v-if="QuestionShow === 'True'">
             <h1>{{ ChallengeQuestions.challenge[QuestionCounter][0]["word"] }}</h1>
         </div>
-        <button @click="answer(1, 'De')">De</button>
-        <button @click="answer(2, 'Het')">Het</button>
+        <button :disabled="isDisabled" @click="answer(1, 'De')">De</button>
+        <button :disabled="isDisabled" @click="answer(2, 'Het')">Het</button>
         <div v-if="finished === 'True'">
             <h2>je bent klaar</h2>
         </div>
@@ -35,6 +35,7 @@ export default {
                 timestamp: '',
             },
             testing: [],
+            isDisabled: false,
 
         }
     },
@@ -95,13 +96,12 @@ export default {
             } else {
                 this.finished = 'True';
                 console.log("limit answers reached");
+                this.isDisabled = true;
                 axios
                     .post('http://127.0.0.1:8000/api/sessionSend', this.challengeData)
                     .then((response) => {
                         this.testing = response.data
                     })
-                this.getNow();
-                this.QuestionCounter = 0;
             }
         },
 

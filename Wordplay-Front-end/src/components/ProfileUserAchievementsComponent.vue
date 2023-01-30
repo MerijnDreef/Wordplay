@@ -1,5 +1,5 @@
 <template>
-    <h1>Achievements and Badges</h1>
+    <h1>Prestaties and Badges</h1>
 </template>
 
 <script lang="ts">

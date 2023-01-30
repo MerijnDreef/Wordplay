@@ -32,7 +32,6 @@ nav {
     height: 68px;
     padding: 0rem 2rem;
     padding-top: 1rem;
-    /* margin-right: 2rem; */
     background-color: #EBEBEB;
     /* overflow: visible; */
     top: -75%;

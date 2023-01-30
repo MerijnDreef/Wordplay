@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>This is the start of profile, awaiting construction</p>
+        <p>Dit is de start van profiel, het is nog in de bouw sorry voor het ongemak</p>
         <UserInfo />
         
 

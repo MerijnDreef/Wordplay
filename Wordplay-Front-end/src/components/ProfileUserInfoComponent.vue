@@ -1,5 +1,5 @@
 <template>
-    <h1>User Info</h1>
+    <h1>Gebruikers Info</h1>
     <RouterLink to="/history">history</RouterLink>
     <button class="buttonSpacing" @click="removeSessionStorage">Log out</button>
 </template>

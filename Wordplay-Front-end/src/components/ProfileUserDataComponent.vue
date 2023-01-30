@@ -1,6 +1,6 @@
 <template>
     <!-- {{ this.$root.Checks }} -->
-    <h1>User Data</h1>
+    <h1>Gebruikers Data</h1>
     <div class="userDataStyling">
         <p>Gebruikers naam: {{ userData.userName }}</p>
         <p>Gebruikers email: {{ userData.userEmail }}</p>
