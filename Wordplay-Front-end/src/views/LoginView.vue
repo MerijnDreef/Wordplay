@@ -15,7 +15,7 @@
         </form>
         <br>
         <!-- <RouterLink to="/register">Geen account?</RouterLink> -->
-        <button @click="loginRegisterSwitch('Register')">Geen account?</button>
+        <button class="loginButtonStyle" @click="loginRegisterSwitch('Register')">Geen account?</button>
     </div>
 
     <div class="register" v-if="RegisterActive">
@@ -47,7 +47,7 @@
         </div>
         <br>
         <!-- <RouterLink to="/login">Al een account?</RouterLink> -->
-        <button @click="loginRegisterSwitch('Login')">Al een account?</button>
+        <button class="loginButtonStyle" @click="loginRegisterSwitch('Login')">Al een account?</button>
 
     </div>
 </template>
@@ -153,6 +153,9 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+    .loginButtonStyle{
+        width: 120px;
     }
 }
 </style>
