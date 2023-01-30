@@ -31,7 +31,7 @@ nav {
 
 .challengesStyle {
     display: inline-block;
-    border-radius: 50%;
+    border-radius: 50% 50% 20% 20%;
     height: 68px;
     padding: 0rem 2rem;
     padding-top: 1rem;
