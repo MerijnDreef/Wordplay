@@ -1,12 +1,12 @@
 <template>
     <div class="challenges">
         <h1>Welk lidwoord hoort hierbij?</h1>
-        <div v-if="QuestionShow === 'True'">
+        <div v-if="QuestionShow === true">
             <h1>{{ ChallengeQuestions.challenge[QuestionCounter][0]["word"] }}</h1>
         </div>
         <button :disabled="isDisabled" @click="answer(1, 'De')">De</button>
         <button :disabled="isDisabled" @click="answer(2, 'Het')">Het</button>
-        <div v-if="finished === 'True'">
+        <div v-if="finished === true">
             <h2>je bent klaar</h2>
         </div>
     </div>
@@ -24,10 +24,10 @@ export default {
             Limit: 19,
             DeAnswer: '',
             HetAnswer: '',
-            QuestionShow: 'False',
+            QuestionShow: false,
             ChallengeQuestionId: [],
             ChallengeQuestions: [],
-            finished: 'False',
+            finished: false,
             challengeData: {
                 userId: sessionStorage.getItem('userLogin'),
                 ChallengeQuestionAnswered: [],
@@ -47,7 +47,7 @@ export default {
             .then((response) => {
                 this.ChallengeQuestions = response.data
                 //show data in view
-            }).then(this.QuestionShow = 'True')
+            }).then(this.QuestionShow = true)
             .catch(error => {
                 console.log(error)
             })
@@ -94,7 +94,7 @@ export default {
                 this.QuestionCounter++;
 
             } else {
-                this.finished = 'True';
+                this.finished = true;
                 console.log("limit answers reached");
                 this.isDisabled = true;
                 axios
