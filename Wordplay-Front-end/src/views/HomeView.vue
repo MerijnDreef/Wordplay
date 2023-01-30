@@ -15,9 +15,13 @@ export default {
 <template>
   <main>
     <!-- <TheWelcome /> -->
-    <RouterLink to="/easy">easy</RouterLink>
+    <h1>
+      <RouterLink to="/easy">easy</RouterLink>
+    </h1>
     <br>
-    <RouterLink to="/difficult">difficult</RouterLink>
+    <h1>
+      <RouterLink to="/difficult">difficult</RouterLink>
+    </h1>
     <br>
     <!-- <div class="one"></div>
     <div class="three"></div>

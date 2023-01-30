@@ -1,41 +1,52 @@
 <template>
     <div class="navClass">
         <h2 class="buttonHeader">
-            <RouterLink to="/profile">Profiel</RouterLink>
+            <RouterLink to="/profile"><font-awesome-icon icon="fa-solid fa-user" /></RouterLink>
+        </h2>
+        <h2 name="challengesStyle" class="challengesStyle">
+            <RouterLink to="/" ><font-awesome-icon icon="fa-solid fa-question" /></RouterLink>
         </h2>
         <h2 class="buttonHeader">
-            <RouterLink to="/">Home</RouterLink>
-        </h2>
-        <h2 class="buttonHeader">
-            <RouterLink to="/leaderboard">Scorebord</RouterLink>
+            <RouterLink to="/leaderboard"><font-awesome-icon icon="fa-solid fa-list" /></RouterLink>
         </h2>
     </div>
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-    nav {
-        text-align: left;
-        margin-left: -1rem;
-        font-size: 1rem;
+nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
 
-        padding: 1rem 0;
-        margin-top: 1rem;
-    }
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
 
-    .buttonHeader {
-        display: inline;
-    }
+.buttonHeader {
+    display: inline-block;
+}
 
-    .navClass {
-        padding-right: 4rem;
-        padding-left:4rem;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        background-color: #EBEBEB;
-    }
+.challengesStyle {
+    display: inline-block;
+    border-radius: 50%;
+    height: 68px;
+    padding: 0rem 2rem;
+    padding-top: 1rem;
+    /* margin-right: 2rem; */
+    background-color: #EBEBEB;
+    /* overflow: visible; */
+    top: -75%;
+}
+
+.navClass {
+    padding-right: 4rem;
+    padding-left: 3rem;
+    height: 36px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EBEBEB;
 }
 </style>
