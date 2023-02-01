@@ -64,7 +64,7 @@ export default {
                 email: '',
                 password: '',
             },
-            LoginChecks: [],
+            LoginChecks: [] as any,
             registerPostData: {
                 email: '',
                 name: '',
@@ -75,7 +75,7 @@ export default {
                 FirstName: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
                 SecondName: Math.floor(Math.random() * (29129 - 1 + 1)) + 1,
             },
-            RegisterChecks: [],
+            RegisterChecks: [] as any,
             LoginActive: true,
             RegisterActive: false,
         }
@@ -91,7 +91,7 @@ export default {
                     this.logInFunction(this.LoginChecks)
                 })
         },
-        logInFunction(givenData) {
+        logInFunction(givenData: any) {
             sessionStorage.setItem('isAuthLogin', givenData.isAuth)
             sessionStorage.setItem('tokenLogin', givenData.token['token'])
             sessionStorage.setItem('userLogin', givenData.user)
@@ -108,7 +108,7 @@ export default {
                 })
         },
 
-        loginRegisterSwitch(ActivePage) {
+        loginRegisterSwitch(ActivePage: string) {
             if (ActivePage == "Login") {
                 this.LoginActive = true;
                 this.RegisterActive = false;

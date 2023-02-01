@@ -25,13 +25,13 @@ export default {
             DeAnswer: '',
             HetAnswer: '',
             QuestionShow: false,
-            ChallengeQuestionId: [],
-            ChallengeQuestions: [],
+            ChallengeQuestionId: [] as any,
+            ChallengeQuestions: [] as any,
             finished: false,
             challengeData: {
                 userId: sessionStorage.getItem('userLogin'),
-                ChallengeQuestionAnswered: [],
-                ChallengeQuestionAnsweredResult: [],
+                ChallengeQuestionAnswered: [] as any,
+                ChallengeQuestionAnsweredResult: [] as any,
                 timestamp: '',
             },
             testing: [],
@@ -46,8 +46,9 @@ export default {
             .post('http://127.0.0.1:8000/api/challenge', this.ChallengeQuestionId)
             .then((response) => {
                 this.ChallengeQuestions = response.data
+                this.QuestionShow = true
                 //show data in view
-            }).then(this.QuestionShow = true)
+            })
             .catch(error => {
                 console.log(error)
             })
@@ -59,7 +60,7 @@ export default {
             }
         },
 
-        answer(answer, chosenAnswer) {
+        answer(answer: number, chosenAnswer: string) {
 
             if (this.ChallengeQuestions.answers[this.QuestionCounter][0]['article_id'] === answer && chosenAnswer === 'De') {
                 Swal.fire({

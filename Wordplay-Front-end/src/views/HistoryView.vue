@@ -1,4 +1,6 @@
 <template>
+    <p>{{ sessionHistory }}</p>
+    <p>{{ sessionResultHistory }}</p>
     <div v-if="historySelect === true">
         <RouterLink to="/profile">Terug naar profiel</RouterLink>
         <div v-for="index in sessionHistory.length" :key="index">
@@ -45,8 +47,8 @@ export default {
             sendData: {
                 userId: sessionStorage.getItem('userLogin')
             },
-            sessionHistory: [],
-            sessionResultHistory: [],
+            sessionHistory: [] as any,
+            sessionResultHistory: [] as any,
             historySelect: true,
             historyChosen: false,
             sessionsendData: {
@@ -69,7 +71,7 @@ export default {
         // historyLoop(length){
         //     this.loopLength = length;
         // }
-        historyGet(result) {
+        historyGet(result: number) {
             this.sessionsendData.sessionId = this.sessionHistory.sessionData[result]['session_id']
 
             console.log(result)
@@ -92,7 +94,7 @@ export default {
             this.historyChosen = true
         },
 
-        historyUnselect(){
+        historyUnselect() {
             this.historySelect = true
             this.historyChosen = false
         }
@@ -118,7 +120,7 @@ export default {
     display: inline;
 }
 
-.spacingHistory{
+.spacingHistory {
     display: inline-block;
     margin-right: 1rem;
 }

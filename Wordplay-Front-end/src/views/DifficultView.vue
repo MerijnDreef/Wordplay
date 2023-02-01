@@ -21,7 +21,7 @@ export default {
         }
     },
     methods: {
-        answer(answer) {
+        answer(answer: string) {
             if (answer === 'De') {
                 this.DeAnswer = 'True';
                 this.HetAnswer = 'False';

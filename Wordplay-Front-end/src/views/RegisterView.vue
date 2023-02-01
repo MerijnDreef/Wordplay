@@ -51,7 +51,7 @@ export default {
                 FirstName: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
                 SecondName: Math.floor(Math.random() * (29129 - 1 + 1)) + 1,
             },
-            Checks: [],
+            Checks: [] as any,
         }
     },
     mounted() {
