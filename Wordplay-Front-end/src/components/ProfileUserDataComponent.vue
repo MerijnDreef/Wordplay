@@ -17,7 +17,7 @@ export default {
             userId: {
                 userLoginId: sessionStorage.getItem('userLogin')
             },
-            userData: []
+            userData: [] as any
         }
     },
     mounted() {
