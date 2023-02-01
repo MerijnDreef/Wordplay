@@ -1,6 +1,4 @@
 <template>
-    <p>{{ sessionHistory }}</p>
-    <p>{{ sessionResultHistory }}</p>
     <div v-if="historySelect === true">
         <RouterLink to="/profile">Terug naar profiel</RouterLink>
         <div v-for="index in sessionHistory.length" :key="index">
