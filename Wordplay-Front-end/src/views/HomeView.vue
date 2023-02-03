@@ -23,11 +23,6 @@ export default {
       <RouterLink to="/difficult">Moeilijk</RouterLink>
     </h1>
     <br>
-    <!-- <div class="one"></div>
-    <div class="three"></div>
-    <div class="two"></div> -->
-
-
   </main>
 </template>
 

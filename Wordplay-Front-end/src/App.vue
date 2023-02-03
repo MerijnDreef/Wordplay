@@ -5,10 +5,7 @@ import { ref } from 'vue'
 import Navigate from "./components/Navigation.vue";
 
 var loggedIn = sessionStorage.getItem('isAuthLogin')
-
-
 </script>
-
 <template>
   <header>
     <div class="currentItem">
